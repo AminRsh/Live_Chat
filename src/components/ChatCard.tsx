@@ -63,10 +63,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
                     const axiosError = error as AxiosError;
                     
                     console.error("Error fetching images:", axiosError);
-            
-                    // console.log("Request URL:", axiosError.config?.url);
-                    // console.log("Response data:", axiosError.response?.data);
-                    // console.log("Response status:", axiosError.response?.status);
+
                 } else {
                     
                     console.error("Non-Axios error:", error);
