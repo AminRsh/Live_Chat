@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import ImgNotFound from '../assets/coverNotFound.png'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
+import { AxiosError } from 'axios'
 
 type TimestampOrServerValue = Timestamp | { '.sv': string } | null;
 
@@ -11,7 +12,7 @@ type TimestampOrServerValue = Timestamp | { '.sv': string } | null;
 interface ChatCardProps {
     id: string;
     roomName: string;
-    createdAt: TimestampOrServerValue 
+    createdAt: TimestampOrServerValue
     creatorName: string;
     creatorImage: string | null;
 }
@@ -33,7 +34,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
             : createdAt && 'seconds' in createdAt
                 ? new Date(createdAt.seconds * 1000)
                 : null;
-    
+
         if (dateObject) {
             formattedDate = dateObject.toLocaleString();
         } else {
@@ -53,9 +54,25 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
                         Authorization: import.meta.env.VITE_FIREBASE_PEXELS_API_KEY
                     }
                 });
+                console.log("Request URL:", response.config.url);
+                console.log("Response data:", response.data);
+                console.log("Response status:", response.status);
                 setImages(response.data.photos);
-            } catch (error) {
-                console.error("Error fetching images:", error);
+
+            } catch (error: unknown) {
+                if (axios.isAxiosError(error)) {
+                    
+                    const axiosError = error as AxiosError;
+                    
+                    console.error("Error fetching images:", axiosError);
+            
+                    console.log("Request URL:", axiosError.config?.url);
+                    console.log("Response data:", axiosError.response?.data);
+                    console.log("Response status:", axiosError.response?.status);
+                } else {
+                    
+                    console.error("Non-Axios error:", error);
+                }
             }
         })();
     }, [roomName]);
