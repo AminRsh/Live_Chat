@@ -54,9 +54,6 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
                         Authorization: import.meta.env.VITE_FIREBASE_PEXELS_API_KEY
                     }
                 });
-                console.log("Request URL:", response.config.url);
-                console.log("Response data:", response.data);
-                console.log("Response status:", response.status);
                 setImages(response.data.photos);
 
             } catch (error: unknown) {
