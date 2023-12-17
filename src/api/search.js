@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
-    console.log('Request:', req);
-    console.log('Response:', res);
+    console.log('Start of function');
     try {
         const response = await axios.get(`https://api.pexels.com/v1/search?query=${req.query.query}&per_page=1`, {
             headers: {
@@ -11,7 +10,6 @@ export default async function handler(req, res) {
         });
         res.status(200).json(response.data);
     } catch (error) {
-        console.error('Error from Search:', error);
-        res.status(500).json({ error: 'Failed to fetch images' });
+        console.log('End of function');;
     }
 }
