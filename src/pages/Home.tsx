@@ -27,7 +27,7 @@ const Home = () => {
                                     key={room.id}
                                     id={room.id}
                                     roomName={room.name}
-                                    createdAt={room.createdAt}
+                                    createdAt={room.createdAt || null}
                                     creatorName={room.creatorName}
                                     creatorImage={room.creatorImage}
                                 />

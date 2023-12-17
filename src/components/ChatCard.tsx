@@ -5,13 +5,13 @@ import ImgNotFound from '../assets/coverNotFound.png'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 
-type TimestampOrServerValue = Timestamp | { '.sv': string };
+type TimestampOrServerValue = Timestamp | { '.sv': string } | null;
 
 
 interface ChatCardProps {
     id: string;
     roomName: string;
-    createdAt: TimestampOrServerValue
+    createdAt: TimestampOrServerValue 
     creatorName: string;
     creatorImage: string | null;
 }
@@ -28,12 +28,12 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
     const history = useNavigate();
     let formattedDate;
     try {
-        const dateObject = (createdAt instanceof Date || (typeof createdAt === 'object' && '.sv' in createdAt && createdAt['.sv'] === 'timestamp'))
-    ? new Date()
-    : createdAt && 'seconds' in createdAt
-        ? new Date(createdAt.seconds * 1000)
-        : null;
-
+        const dateObject = createdAt && (createdAt instanceof Date || (typeof createdAt === 'object' && '.sv' in createdAt && createdAt['.sv'] === 'timestamp'))
+            ? new Date()
+            : createdAt && 'seconds' in createdAt
+                ? new Date(createdAt.seconds * 1000)
+                : null;
+    
         if (dateObject) {
             formattedDate = dateObject.toLocaleString();
         } else {
