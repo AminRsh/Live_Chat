@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
+    console.log('Request:', req);
+    console.log('Response:', res);
     try {
         const response = await axios.get(`https://api.pexels.com/v1/search?query=${req.query.query}&per_page=1`, {
             headers: {
