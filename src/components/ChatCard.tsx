@@ -48,7 +48,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get(`https://api.pexels.com/v1/search?query=${roomName}&per_page=1`, {
+                const response = await axios.get(`/api/search?query=${roomName}&per_page=1`, {
                     headers: {
                         Authorization: import.meta.env.VITE_FIREBASE_PEXELS_API_KEY
                     }
