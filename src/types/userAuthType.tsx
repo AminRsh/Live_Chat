@@ -4,6 +4,6 @@ export type UserAuthType = {
     uid: string;
     displayName?: string | null;
     email?: string | null;
-    photoURL?: string;
+    photoURL?: string | null;
     createdAt?: Timestamp;
 };

@@ -3,6 +3,7 @@ import { Timestamp } from 'firebase/firestore';
 export interface Room {
   id: string;
   name: string;
-  createdAt: Timestamp | null;
+  createdAt: Timestamp | null
   creatorName: string;
+  creatorImage: string | null
 }
