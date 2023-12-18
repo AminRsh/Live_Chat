@@ -12,6 +12,7 @@ export const createRoom = async (roomName: string, user: UserAuthType) => {
         createdAt: serverTimestamp(),
         creatorId: user.uid,
         creatorName: user.displayName || user.email,
+        creatorImage: user.photoURL
     });
 };
 

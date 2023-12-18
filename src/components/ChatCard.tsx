@@ -49,7 +49,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
     useEffect(() => {
         (async () => {
             try {
-                console.log('Making request to /api/search');
+                // console.log('Making request to /api/search');
                 const response = await axios.get(`/api/search?query=${roomName}&per_page=1`, {
                     headers: {
                         Authorization: import.meta.env.VITE_FIREBASE_PEXELS_API_KEY
@@ -59,13 +59,13 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
 
             } catch (error: unknown) {
                 if (axios.isAxiosError(error)) {
-                    
+
                     const axiosError = error as AxiosError;
-                    
+
                     console.error("Error fetching images:", axiosError);
 
                 } else {
-                    
+
                     console.error("Non-Axios error:", error);
                 }
             }
