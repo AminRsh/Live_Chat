@@ -22,7 +22,6 @@ interface Image {
     };
 }
 
-
 const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorName, creatorImage }) => {
 
     const [images, setImages] = useState<Image[]>([]);
@@ -61,11 +60,9 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
                 if (axios.isAxiosError(error)) {
 
                     const axiosError = error as AxiosError;
-
                     console.error("Error fetching images:", axiosError);
 
                 } else {
-
                     console.error("Non-Axios error:", error);
                 }
             }
@@ -84,7 +81,7 @@ const ChatCard: React.FC<ChatCardProps> = ({ id, roomName, createdAt, creatorNam
     return (
         <Card
             shadow={false}
-            className="relative mb-[50px] grid h-[30rem] w-full max-w-[20rem] items-end justify-center overflow-hidden text-center bg-center bg-cover  hover:animate-shine transform transition duration-500 hover:scale-[1.3] hover:z-50 
+            className="relative mb-[50px] grid h-[30rem] mx-auto w-full max-w-[20rem] items-end justify-center overflow-hidden text-center bg-center bg-cover  hover:animate-shine transform transition duration-500 hover:scale-[1.3] hover:z-50 
             hover:shadow-[20px_20px_100px_white]"
             style={{ backgroundImage: images.length > 0 && images[0].src.landscape ? `url(${images[0].src.landscape})` : `url(${ImgNotFound})` }}
         >

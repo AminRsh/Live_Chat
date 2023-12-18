@@ -16,11 +16,11 @@ const Home = () => {
     return (
         <div className="bg-center bg-cover" style={{ backgroundImage: `url(${HomeBg})`}} >
             <div className="absloute inset-0 bg-[rgba(0,0,0,0.5)]" >
-                <div className="flex justify-center items-center">
-                    <h1 className="text-white text-[50px] pt-[60px]">Explore Diverse Conversations: Chat Room Central</h1>
+                <div className="flex justify-center items-center xsm:mx-auto">
+                    <h1 className="text-white text-[15px] pt-[60px] lg:text-[40px] md:text-[30px] sm:text-[25px] xsm:text-[20px]">Explore Diverse Conversations: Chat Room Central</h1>
                 </div>
-                <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 py-[100px]">
-                    <div className="col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+                <div className="p-4 mx-4 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 py-[100px]">
+                    <div className="col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         {
                             rooms.map((room) => (
                                 <ChatCard
